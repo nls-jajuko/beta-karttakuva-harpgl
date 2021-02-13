@@ -14,7 +14,7 @@ import {
 import { AuthenticationMethod, VectorTileDataSource, APIFormat } from "@here/harp-vectortile-datasource";
 import { AvoinKarttakuvaWebTileDataSource } from "./AvoinKarttakuvaWebTile.js";
 import { TAUSTAKARTTA, MAASTOKARTTA } from './AvoinKarttakuvaWebTile.js';
-
+import { MapViewEventNames} from '@here/harp-mapview';
 import { ThemeLoader } from '@here/harp-mapview';
 
 const defaultTheme = "resources/berlin_tilezen_base.json";
@@ -24,23 +24,17 @@ export class View {
         this.apikey = args.apikey;
         this.canvas = args.canvas;
         this.theme = args.theme === undefined ? defaultTheme : args.theme;
+        this.rasterBackground=args.rasterBackground;
         this.mapView = this.initialize();
     }
 
     initialize() {
 
-
-        const loadedTheme = ThemeLoader.load(this.theme).then(t => {
-            ThemeLoader.isThemeLoaded(t);
-            console.log(this.theme, t);
-            return t;
-        });
-
         const mapView = new MapView({
-            maxZoomLevel:18,
+            maxZoomLevel:19,
             canvas: this.canvas,
             projection: sphereProjection,
-            theme: loadedTheme,
+            theme: this.theme,
             decoderUrl: "decoder.bundle.js"
         });
 
@@ -87,9 +81,10 @@ export class View {
                 apiFormat: APIFormat.XYZMVT,
                 styleSetName: "beta-karttakuva",
                 url: 'https://beta-karttakuva.maanmittauslaitos.fi/kiinteisto-avoin/vectortiles/wmts/1.0.0/kiinteistojaotus/default/v2/WGS84_Pseudo-Mercator/{z}/{y}/{x}.pbf',
-                minDataLevel: 13,
-                maxDataLevel: 17,
-                maxDisplayLevel: 18
+                minDataLevel: 14,
+                maxDataLevel: 16,
+                minDisplayLevel:14, 
+                maxDisplayLevel: 19
             }, ...auth
         });
         mapView.addDataSource(cadastreSource);
@@ -104,6 +99,11 @@ export class View {
         );
         atmosphere.lightMode = AtmosphereLightMode.LightDynamic;
        
+
+        mapView.addEventListener(MapViewEventNames.CameraPositionChanged, (c)=>{
+            console.log("EVEN",c);
+
+        } );
 
         return mapView;
     }

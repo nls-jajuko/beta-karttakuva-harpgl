@@ -3,26 +3,6 @@
         "parkColor": {
             "value": "#6C9478"
         },
-        "extrudedBuildingsCondition": {
-            "value": [
-                "all",
-                [
-                    "==",
-                    [
-                        "get",
-                        "$layer"
-                    ],
-                    "buildings"
-                ],
-                [
-                    "==",
-                    [
-                        "geometry-type"
-                    ],
-                    "Polygon"
-                ]
-            ]
-        },
         "defaultBuildingColor": {
             "value": "#EDE7E1E6"
         },
@@ -31,89 +11,7 @@
         },
         "waterColor": {
             "value": "hsl(200, 80%, 85%)"
-        },
-        "countryBorderLineWidth": {
-            "value": [
-                "interpolate",
-                [
-                    "linear"
-                ],
-                [
-                    "zoom"
-                ],
-                2,
-                2000,
-                3,
-                1400,
-                4,
-                1000,
-                5,
-                500,
-                6,
-                220,
-                7,
-                90,
-                8,
-                50,
-                9,
-                30,
-                10,
-                20,
-                11,
-                15,
-                12,
-                10,
-                13,
-                5,
-                14,
-                2
-            ]
-        },
-        "roadsFadeNear": {
-            "value": 0.9
-        },
-        "roadsFadeFar": {
-            "value": 0.95
-        },
-        "countryBorderOutlineWidth": {
-            "value": [
-                "interpolate",
-                [
-                    "linear"
-                ],
-                [
-                    "zoom"
-                ],
-                1,
-                10000,
-                2,
-                8000,
-                3,
-                7000,
-                4,
-                5000,
-                5,
-                3000,
-                6,
-                2000,
-                7,
-                1000,
-                8,
-                500,
-                9,
-                250,
-                10,
-                120,
-                11,
-                80,
-                12,
-                40,
-                13,
-                20,
-                14,
-                10
-            ]
-        }
+        }        
     },
     "sky": {
         "type": "gradient",
@@ -122,11 +20,6 @@
         "groundColor": "#87959A",
         "monomialPower": 1
     },
-    "fog": {
-        "color": "#DDDCDA",
-        "startRatio": 0.8
-    },
-    "clearColor": "#171717",
     "lights": [
         {
             "type": "ambient",
@@ -223,24 +116,7 @@
                 ],
                 "technique": "fill",
                 "renderOrder": 5,
-                "color": {
-                    "interpolation": "Linear",
-                    "zoomLevels": [
-                        14,
-                        15,
-                        16,
-                        17,
-                        18
-                    ],
-                    "values": [
-                        "#0000ff",
-                        "#1a3b58",
-                        "hsl(180, 60%, 50%)",
-                        "hsl(180, 60%, 50%)",
-                        "hsl(200, 60%, 50%)"
-                    ]
-                },
-                "emissiveIntensity": 0.9
+                "color": "#a6bddb"
 
             },
             {
@@ -312,22 +188,8 @@
                 "technique": "solid-line",
                 "renderOrder": 1000,
                 "final": true,
-                "color": "#c0c0c0",
-                "lineWidth": [
-                    "interpolate",
-                    [
-                        "linear"
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    5,
-                    15,
-                    10,
-                    10,
-                    15,
-                    5
-                ],
+                "color": "#f0f0ff",
+                "lineWidth": 4,
                 "clipping": false
             },
             {
@@ -368,11 +230,11 @@
                         18
                     ],
                     "values": [
+                        0,
+                        0,
+                        1,
                         2,
-                        4,
-                        6,
-                        8,
-                        12
+                        3
                     ]
                 },
                 "boundaryWalls": true,
