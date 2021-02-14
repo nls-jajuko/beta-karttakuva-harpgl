@@ -163,36 +163,7 @@
                     "waterColor"
                 ]
             },
-            {
-                "id": "roads",
-                "description": "road",
-                "layer": "liikenne",
-                "when": [
-                    "all",
-                    [
-                        "==",
-                        [
-                            "get",
-                            "$layer"
-                        ],
-                        "liikenne"
-                    ],
-                    [
-                        "==",
-                        [
-                            "geometry-type"
-                        ],
-                        "LineString"
-                    ]
-                ],
-                "technique": "solid-line",
-                "renderOrder": 1000,
-                "final": true,
-                "color": "#f0f0ff",
-                "lineWidth": 4,
-                "clipping": false
-            },
-            {
+             {
                 "id": "buildings",
                 "when": [
                     "all",

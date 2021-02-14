@@ -79,7 +79,7 @@ export class View {
                 styleSetName: "beta-karttakuva",
                 url: 'https://beta-karttakuva.maanmittauslaitos.fi/kiinteisto-avoin/vectortiles/wmts/1.0.0/kiinteistojaotus/default/v2/WGS84_Pseudo-Mercator/{z}/{y}/{x}.pbf',
                 minDataLevel: 14,
-                maxDataLevel: 16,
+                maxDataLevel: 17,
                 minDisplayLevel:14, 
                 maxDisplayLevel: 19
             }, ...auth

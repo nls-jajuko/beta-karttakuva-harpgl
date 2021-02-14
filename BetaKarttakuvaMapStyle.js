@@ -48,7 +48,7 @@ function extendStyle(styleUrl) {
                     "gapSize": 3,
                     "dashSize": 7,
                     "metricUnit": "Pixel",
-                    "renderOrder": 10000,
+                    "renderOrder": 12000,
                     "final": true,
                     "clipping": false,
                     "lineWidth": [
@@ -66,17 +66,7 @@ function extendStyle(styleUrl) {
                         4,
                         2
                     ],
-                    color: {
-                        interpolation: "Linear",
-                        zoomLevels: [14, 15, 16, 18, 20],
-                        values: [
-                            "#5f0000",
-                            "#7f0000",
-                            "#9f0000",
-                            "#af0000",
-                            "#ff0000"
-                        ]
-                    }
+                    color: "#ff0000"
 
                 }, {
                     "when":

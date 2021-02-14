@@ -23,7 +23,7 @@ const app = new View({
     apikey: apikey,
     canvas: document.getElementById("map"),
     theme: theme,
-    rasterBackground: false
+    rasterBackground: true
 });
 
 const mapView = app.mapView;
