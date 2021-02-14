@@ -7,15 +7,12 @@
 import { EarthConstants, GeoCoordinates, sphereProjection } from "@here/harp-geoutils";
 import {
     AtmosphereLightMode,
-    CopyrightElementHandler,
     MapView,
     MapViewAtmosphere
 } from "@here/harp-mapview";
 import { AuthenticationMethod, VectorTileDataSource, APIFormat } from "@here/harp-vectortile-datasource";
 import { AvoinKarttakuvaWebTileDataSource } from "./AvoinKarttakuvaWebTile.js";
 import { TAUSTAKARTTA, MAASTOKARTTA } from './AvoinKarttakuvaWebTile.js';
-import { MapViewEventNames} from '@here/harp-mapview';
-import { ThemeLoader } from '@here/harp-mapview';
 
 const defaultTheme = "resources/berlin_tilezen_base.json";
 
@@ -99,11 +96,7 @@ export class View {
         );
         atmosphere.lightMode = AtmosphereLightMode.LightDynamic;
        
-
-        mapView.addEventListener(MapViewEventNames.CameraPositionChanged, (c)=>{
-            console.log("EVEN",c);
-
-        } );
+        
 
         return mapView;
     }

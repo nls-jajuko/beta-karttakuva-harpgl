@@ -10,6 +10,8 @@ import { MapControls, MapControlsUI } from "@here/harp-map-controls";
 
 import { extendStyle} from './BetaKarttakuvaMapStyle';
 
+import { Hash } from './hash.js';
+
 /* get one free at maanmittauslaitos.fi */
 const apikey = '7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2',
     styleUrl = 'resources/style.json';
@@ -39,3 +41,13 @@ mapView.lookAt({ target: new GeoCoordinates(60.158872, 24.877048), zoomLevel: 15
 // make sure the map is rendered
 mapView.update();
 
+let viewNums = {
+    target: mapView.target,
+    zoomLevel: mapView.zoomLevel,
+    tilt: mapView.tilt,
+    isMoving: mapView.cameraIsMoving
+}
+console.log(viewNums);
+
+let hash = new Hash();
+hash.addTo(mapView);
