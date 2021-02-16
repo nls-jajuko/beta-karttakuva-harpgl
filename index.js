@@ -1,14 +1,9 @@
-/*
- * Copyright (C) 2017-2020 HERE Europe B.V.
- * Licensed under Apache 2.0, see full license in LICENSE
- * SPDX-License-Identifier: Apache-2.0
- */
 
 import { GeoCoordinates } from "@here/harp-geoutils";
 import { View } from "./View";
 import { MapControls, MapControlsUI } from "@here/harp-map-controls";
 
-import { extendStyle} from './BetaKarttakuvaMapStyle';
+import { extendStyle } from './BetaKarttakuvaMapStyle';
 
 import { Hash } from './hash.js';
 
@@ -16,7 +11,6 @@ import { Hash } from './hash.js';
 const apikey = '7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2',
     styleUrl = 'resources/style.json';
 
-    
 const theme = extendStyle(styleUrl);
 
 const app = new View({
@@ -24,30 +18,16 @@ const app = new View({
     canvas: document.getElementById("map"),
     theme: theme,
     rasterBackground: true
-});
+}), mapView = app.mapView,
+    mapControls = new MapControls(mapView),
+    ui = new MapControlsUI(mapControls, { zoomLevel: "input" }),
+    hash = new Hash();
 
-const mapView = app.mapView;
 
-const mapControls = new MapControls(mapView);
 mapControls.maxTiltAngle = 90;
-const ui = new MapControlsUI(mapControls, { zoomLevel: "input" });
 
 mapView.canvas.parentElement.appendChild(ui.domElement);
-
-
-// center the camera to New York
 mapView.lookAt({ target: new GeoCoordinates(60.158872, 24.877048), zoomLevel: 15.6, tilt: 35 });
-
-// make sure the map is rendered
 mapView.update();
 
-let viewNums = {
-    target: mapView.target,
-    zoomLevel: mapView.zoomLevel,
-    tilt: mapView.tilt,
-    isMoving: mapView.cameraIsMoving
-}
-console.log(viewNums);
-
-let hash = new Hash();
 hash.addTo(mapView);

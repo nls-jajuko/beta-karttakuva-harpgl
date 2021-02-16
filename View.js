@@ -21,14 +21,14 @@ export class View {
         this.apikey = args.apikey;
         this.canvas = args.canvas;
         this.theme = args.theme === undefined ? defaultTheme : args.theme;
-        this.rasterBackground=args.rasterBackground;
+        this.rasterBackground = args.rasterBackground;
         this.mapView = this.initialize();
     }
 
     initialize() {
 
         const mapView = new MapView({
-            maxZoomLevel:19,
+            maxZoomLevel: 19,
             canvas: this.canvas,
             projection: sphereProjection,
             theme: this.theme,
@@ -80,7 +80,7 @@ export class View {
                 url: 'https://beta-karttakuva.maanmittauslaitos.fi/kiinteisto-avoin/vectortiles/wmts/1.0.0/kiinteistojaotus/default/v2/WGS84_Pseudo-Mercator/{z}/{y}/{x}.pbf',
                 minDataLevel: 14,
                 maxDataLevel: 17,
-                minDisplayLevel:14, 
+                minDisplayLevel: 14,
                 maxDisplayLevel: 19
             }, ...auth
         });
@@ -95,8 +95,8 @@ export class View {
             updateCallback
         );
         atmosphere.lightMode = AtmosphereLightMode.LightDynamic;
-       
-        
+
+
 
         return mapView;
     }

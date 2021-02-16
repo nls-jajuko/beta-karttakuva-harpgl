@@ -43,9 +43,6 @@ const AVOIN_KARTTAKUVA_COPYRIGHT_INFO = [{
 
 export class AvoinKarttakuvaTileProvider {
 
-
-
-
     constructor(m_options) {
         this.m_options = m_options;
         this.m_ppi = WebTileDataSource.ppiValue.ppi72;
@@ -68,17 +65,11 @@ export class AvoinKarttakuvaTileProvider {
             `?${imageRequestParams.join("&")}` : '';
 
         const url =
-            `${this.m_tileBaseAddress}/` +
-            `${level}/${row}/${column}.png` +
-            `${imageQueryParams}`;
+            `${this.m_tileBaseAddress}/${level}/${row}/${column}.png${imageQueryParams}`;
 
-        const copyPromise = new Promise((res, rej) => {
-            res(AVOIN_KARTTAKUVA_COPYRIGHT_INFO);
-        });
-
-        return Promise.all([
+        return Promise.all([   
             textureLoader.load(url, undefined, abortSignal),
-            copyPromise
+            AVOIN_KARTTAKUVA_COPYRIGHT_INFO
         ]);
     }
 }
@@ -101,4 +92,4 @@ export class AvoinKarttakuvaWebTileDataSource extends WebTileDataSource {
     }
 }
 
-export { TILE_BASE_NORMAL as TAUSTAKARTTA, TILE_BASE_TERRAIN as MAASTOKARTTA};
+export { TILE_BASE_NORMAL as TAUSTAKARTTA, TILE_BASE_TERRAIN as MAASTOKARTTA };
